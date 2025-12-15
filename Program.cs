@@ -13,7 +13,8 @@ namespace Notification
             List<INotification> notifications =
             [
                 new EmailNotification("funnyZiliya@gmail.com"),
-                new EmailNotification("sadZiliya@gmail.com"),
+                new PushNotification("Zilliya"),
+                new SmsNotification("+475318962"),
             ];
 
             foreach (var notification in notifications)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Notification
 {
-    internal interface INotification
+    public interface INotification
     {
         void Send(string message);
     }

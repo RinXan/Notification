@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Notification
 {
-    public class EmailNotification(string recipient) : Notification(recipient)
+    public class SmsNotification(string recipient) : Notification(recipient)
     {
         public override void Send(string message)
         {
             ValidateMessage(message);
-            Console.WriteLine($"Email to {Recipient}: {message}");
+            Console.WriteLine($"Sms to {Recipient}: {message}");
         }
     }
 }

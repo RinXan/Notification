@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Notification
 {
-    abstract class Notification: INotification
+    abstract public class Notification: INotification
     {
         protected string _recipient;
 
@@ -16,12 +16,13 @@ namespace Notification
             {
                 return _recipient;
             }
-            set
+            protected set
             {
-                if(!string.IsNullOrEmpty(value))
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    _recipient = value;
+                    throw new ArgumentException("Recipient cannot be empty");
                 }
+                _recipient = value;
             }
         }
 
@@ -30,11 +31,11 @@ namespace Notification
             Recipient = recipient;
         }
 
-        protected static void ValidateMessage(string message)
+        protected virtual void ValidateMessage(string message)
         {
             if (string.IsNullOrEmpty(message) || message.Length > 200)
             {
-                Console.WriteLine($"{message} --- validation error");
+                throw new ArgumentException("Message cannot be empty or more than 200 symbols");
             }
         }
 
